@@ -66,6 +66,7 @@ class HistoryScreen extends React.Component {
 }
 
 export const QRListItem = props => {
+  console.log('THE CONSOLE LOG', props)
   return (
     <List>
       <ListItem thumbnail>
@@ -90,7 +91,7 @@ export const QRListItem = props => {
           <Button
             transparent
             onPress={() => {
-              console.log(props.qr)
+              console.log('I still work')
               // this.deleteFromDB(props.qr.id)
             }}
           >
