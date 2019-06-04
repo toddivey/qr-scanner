@@ -25,6 +25,16 @@ export default class SQL {
     );
   };
 
+  static DeleteQR = id => {
+    db.transaction(
+      tx => {
+        tx.executeSql(`DELETE FROM ${table_name} WHERE id=${id}`)
+      },
+      null,
+      GetQRS()
+    );
+  };
+
   static GetQRS = () => {
     return new Promise((resolve, reject) => {
       db.transaction(async tx => {
