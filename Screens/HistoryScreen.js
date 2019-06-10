@@ -32,11 +32,7 @@ class HistoryScreen extends React.Component {
     this.setState({ qrs, fetching: false });
   }
 
-  deleteFromDB = id => {
-    console.log("yes here")
-    //  SQL.DeleteQR(id);
-    //  this.props.qrs.filter(e => e.id !== id)
-  };
+
   render() {
     let { qrs, fetching } = this.state;
 
@@ -53,20 +49,25 @@ class HistoryScreen extends React.Component {
         </Message>
       );
     } else
-      return (
-        <Container style={{ marginTop: Constants.statusBarHeight }}>
+    return (
+      <Container style={{ marginTop: Constants.statusBarHeight }}>
           <Content>
             {qrs.map(qr => (
               <QRListItem key={qr.id} qr={qr} {...this.props} />
-            ))}
+              ))}
           </Content>
         </Container>
       );
+    }
   }
-}
 
-export const QRListItem = props => {
-  // console.log('THE CONSOLE LOG', props)
+  export const QRListItem = props => {
+    // console.log('THE CONSOLE LOG', props)
+      deleteFromDB = (id) => {
+        // console.log("yes here", id)
+         SQL.DeleteQR(id);
+         props.qrs.filter(e => e.id !== id)
+      }
   return (
     <List>
       <ListItem thumbnail>

@@ -28,10 +28,10 @@ export default class SQL {
   static DeleteQR = id => {
     db.transaction(
       tx => {
-        tx.executeSql(`delete from ${table_name} where id = ?;`, [id])
+        tx.executeSql(`delete from qrs where id = ?;`, [id])
       },
       null,
-      GetQRS()
+      null
     );
   };
 
