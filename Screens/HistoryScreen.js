@@ -32,6 +32,12 @@ class HistoryScreen extends React.Component {
     this.setState({ qrs, fetching: false });
   }
 
+  async componentDidUpdate(prevState){
+    if (prevState !== this.state){
+      let qrs = await SQL.GetQRS();
+    this.setState({ qrs, fetching: false });
+    }
+  }
 
   render() {
     let { qrs, fetching } = this.state;
@@ -64,9 +70,8 @@ class HistoryScreen extends React.Component {
   export const QRListItem = props => {
     // console.log('THE CONSOLE LOG', props)
       deleteFromDB = (id) => {
-        // console.log("yes here", id)
+         //console.log(props)
          SQL.DeleteQR(id);
-         props.qrs.filter(e => e.id !== id)
       }
   return (
     <List>
