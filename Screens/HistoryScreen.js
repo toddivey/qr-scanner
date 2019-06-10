@@ -33,9 +33,9 @@ class HistoryScreen extends React.Component {
   }
 
   deleteFromDB = id => {
-    console.log(this.props.qr.id)
-    // SQL.DeleteQR(id);
-    // this.props.qrs.filter(e => e.id !== id)
+    console.log("yes here")
+    //  SQL.DeleteQR(id);
+    //  this.props.qrs.filter(e => e.id !== id)
   };
   render() {
     let { qrs, fetching } = this.state;
@@ -66,7 +66,7 @@ class HistoryScreen extends React.Component {
 }
 
 export const QRListItem = props => {
-  console.log('THE CONSOLE LOG', props)
+  // console.log('THE CONSOLE LOG', props)
   return (
     <List>
       <ListItem thumbnail>
@@ -91,8 +91,7 @@ export const QRListItem = props => {
           <Button
             transparent
             onPress={() => {
-              console.log('I still work')
-              // this.deleteFromDB(props.qr.id)
+               this.deleteFromDB(props.qr.id)
             }}
           >
             <Text>Delete</Text>
